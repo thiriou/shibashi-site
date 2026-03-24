@@ -50,7 +50,7 @@ function drawSnow() {
 }
 
 function startGlitch() {
-  document.body.classList.add('glitching');
+  document.documentElement.classList.add('glitching');
   canvas.classList.add('visible');
   glitchLabel.textContent = '[ 信号干扰 : ON ]';
   glitchBtn.classList.add('active');
@@ -58,7 +58,7 @@ function startGlitch() {
 }
 
 function stopGlitch() {
-  document.body.classList.remove('glitching');
+  document.documentElement.classList.remove('glitching');
   canvas.classList.remove('visible');
   glitchLabel.textContent = '[ 信号干扰 : OFF ]';
   glitchBtn.classList.remove('active');
