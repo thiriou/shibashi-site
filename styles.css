@@ -428,6 +428,17 @@ body::after {
 /* Active glitch state — full page black & white high contrast */
 html.glitching {
   filter: grayscale(1) contrast(2.2) brightness(0.8) !important;
+  background: #000 !important;
+}
+
+html.glitching body {
+  background-color: #000 !important;
+  background-image: none !important;
+}
+
+html.glitching body::before,
+html.glitching body::after {
+  display: none !important;
 }
 
 /* Snow canvas sits on top of everything */
