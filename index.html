@@ -1,445 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>十八十 — 来自天鹰座ζ的声音</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=VT323&display=swap');
-
-  :root {
-    --teal-deep: #003d4d;
-    --teal-mid: #006880;
-    --teal-light: #00a8c4;
-    --teal-shimmer: #00c8e8;
-    --gold: #ffd700;
-    --red: #cc2200;
-    --green-neon: #00ff88;
-    --text-yellow: #ffee88;
-    --white: #e8f4f8;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background-color: var(--teal-deep);
-    background-image:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65 0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.15'/%3E%3C/svg%3E"),
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 3px,
-        rgba(0, 200, 232, 0.03) 3px,
-        rgba(0, 200, 232, 0.03) 4px
-      ),
-      repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 60px,
-        rgba(0, 168, 196, 0.04) 60px,
-        rgba(0, 168, 196, 0.04) 61px
-      );
-    background-size: 400px 400px, 4px 4px, 60px 60px;
-    min-height: 100vh;
-    font-family: 'Courier Prime', monospace;
-    color: var(--white);
-    overflow-x: hidden;
-    cursor: crosshair;
-  }
-
-  /* Animated water shimmer overlay */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 8px,
-      rgba(0, 200, 232, 0.02) 8px,
-      rgba(0, 200, 232, 0.02) 9px
-    );
-    pointer-events: none;
-    animation: shimmer 8s linear infinite;
-    z-index: 0;
-  }
-
-  @keyframes shimmer {
-    0% { background-position: 0 0; }
-    100% { background-position: 100px 100px; }
-  }
-
-  /* Scanline CRT effect */
-  body::after {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.04) 2px,
-      rgba(0,0,0,0.04) 4px
-    );
-    pointer-events: none;
-    z-index: 100;
-  }
-
-  .wrapper {
-    position: relative;
-    z-index: 1;
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 20px 16px 60px;
-  }
-
-  /* ============ MARQUEE TOP ============ */
-  .marquee-bar {
-    background: #004455;
-    border-top: 2px solid var(--teal-shimmer);
-    border-bottom: 2px solid var(--teal-shimmer);
-    padding: 6px 0;
-    overflow: hidden;
-    white-space: nowrap;
-    font-family: 'VT323', monospace;
-    font-size: 18px;
-    color: var(--gold);
-    letter-spacing: 3px;
-    text-shadow: 0 0 8px rgba(255,215,0,0.6);
-    margin-bottom: 28px;
-  }
-
-  .marquee-inner {
-    display: inline-block;
-    animation: marquee-scroll 22s linear infinite;
-  }
-
-  @keyframes marquee-scroll {
-    0% { transform: translateX(100vw); }
-    100% { transform: translateX(-100%); }
-  }
-
-  /* ============ HEADER ============ */
-  .site-header {
-    text-align: center;
-    padding: 16px 0 28px;
-    border-bottom: 3px double rgba(0, 200, 232, 0.4);
-    margin-bottom: 32px;
-  }
-
-  .site-header h1 {
-    font-family: 'Noto Serif SC', serif;
-    font-size: clamp(2.4rem, 6vw, 4.2rem);
-    font-weight: 700;
-    color: var(--red);
-    text-shadow: 3px 3px 0 #660000, 0 0 20px rgba(204,34,0,0.4), 0 0 40px rgba(204,34,0,0.2);
-    line-height: 1.2;
-    letter-spacing: 4px;
-    margin-bottom: 12px;
-  }
-
-  .site-header .subtitle {
-    font-family: 'VT323', monospace;
-    font-size: 1.3rem;
-    color: var(--teal-shimmer);
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    text-shadow: 0 0 10px rgba(0,200,232,0.7);
-    animation: flicker 4s ease-in-out infinite;
-  }
-
-  @keyframes flicker {
-    0%, 94%, 100% { opacity: 1; }
-    95% { opacity: 0.3; }
-    97% { opacity: 1; }
-    99% { opacity: 0.5; }
-  }
-
-  .site-header .location {
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.78rem;
-    color: rgba(0,200,232,0.5);
-    letter-spacing: 3px;
-    margin-top: 10px;
-    text-transform: uppercase;
-  }
-
-  /* ============ ARTIST IMAGE ============ */
-  .artist-photo-block {
-    text-align: center;
-    margin: 0 0 30px;
-  }
-
-  .artist-photo-block img {
-    width: 140px;
-    height: 140px;
-    object-fit: cover;
-    border: 3px solid var(--teal-shimmer);
-    box-shadow: 0 0 0 2px #003344, 0 0 20px rgba(0,200,232,0.5), 0 0 40px rgba(0,200,232,0.2);
-    filter: sepia(20%) hue-rotate(160deg) saturate(1.3);
-    image-rendering: pixelated;
-    transition: filter 0.3s;
-  }
-
-  .artist-photo-block img:hover {
-    filter: sepia(0%) hue-rotate(0deg) saturate(1.8) brightness(1.1);
-  }
-
-  /* ============ TABLE LAYOUT ============ */
-  .main-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 12px;
-    margin-bottom: 28px;
-  }
-
-  .main-table td {
-    background: rgba(0, 50, 70, 0.7);
-    border: 2px solid rgba(0,168,196,0.5);
-    padding: 18px 20px;
-    vertical-align: top;
-    transition: border-color 0.3s, background 0.3s;
-  }
-
-  .main-table td:hover {
-    border-color: var(--teal-shimmer);
-    background: rgba(0, 60, 85, 0.85);
-  }
-
-  .cell-title {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 1.4rem;
-    color: var(--red);
-    text-shadow: 2px 2px 0 #440000, 0 0 10px rgba(204,34,0,0.3);
-    display: block;
-    margin-bottom: 8px;
-    line-height: 1.3;
-  }
-
-  .cell-subtitle {
-    font-family: 'VT323', monospace;
-    font-size: 1rem;
-    color: rgba(0,200,232,0.7);
-    letter-spacing: 2px;
-    display: block;
-    margin-bottom: 14px;
-  }
-
-  /* ============ ALBUM COVERS ============ */
-  .album-link {
-    display: block;
-    text-align: center;
-    margin: 0 auto;
-    text-decoration: none;
-  }
-
-  .album-art {
-    width: 130px;
-    height: 130px;
-    object-fit: cover;
-    border: 2px solid rgba(0,200,232,0.5);
-    display: block;
-    margin: 0 auto 8px;
-    box-shadow: 0 0 12px rgba(0,200,232,0.3);
-    image-rendering: auto;
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-  }
-
-  .album-link:hover .album-art {
-    transform: scale(1.04) translateY(-2px);
-    box-shadow: 0 0 24px rgba(0,200,232,0.6);
-    border-color: var(--gold);
-  }
-
-  .album-title {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 0.85rem;
-    color: var(--text-yellow);
-    text-align: center;
-    display: block;
-    line-height: 1.4;
-  }
-
-  .click-label {
-    font-family: 'VT323', monospace;
-    font-size: 0.95rem;
-    color: var(--gold);
-    text-align: center;
-    display: block;
-    margin-top: 6px;
-    letter-spacing: 2px;
-    animation: blink 1.4s step-end infinite;
-    text-shadow: 0 0 6px rgba(255,215,0,0.6);
-  }
-
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-
-  /* ============ ABOUT TEXT ============ */
-  .about-text {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 0.88rem;
-    line-height: 1.85;
-    color: rgba(232,244,248,0.82);
-    text-indent: 1.5em;
-    font-weight: 300;
-  }
-
-  .about-text .chinese-block {
-    display: block;
-    color: rgba(0,200,232,0.75);
-    font-size: 0.82rem;
-    margin-top: 10px;
-    font-style: italic;
-  }
-
-  /* ============ BOTTOM GALLERY ROW ============ */
-  .gallery-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 8px;
-    margin-bottom: 28px;
-  }
-
-  .gallery-table td {
-    background: rgba(0,40,55,0.6);
-    border: 2px solid rgba(0,168,196,0.35);
-    text-align: center;
-    padding: 10px 8px;
-    width: 20%;
-  }
-
-  .gallery-table td:hover {
-    border-color: var(--gold);
-  }
-
-  .gallery-thumb {
-    width: 56px;
-    height: 56px;
-    object-fit: cover;
-    display: block;
-    margin: 0 auto 4px;
-    border: 1px solid rgba(0,200,232,0.3);
-    image-rendering: auto;
-    transition: transform 0.2s;
-    cursor: pointer;
-  }
-
-  .gallery-table td:hover .gallery-thumb {
-    transform: scale(1.08);
-  }
-
-  /* ============ FOOTER INFO ============ */
-  .footer-info {
-    text-align: center;
-    padding: 20px;
-    border-top: 3px double rgba(0,200,232,0.3);
-    margin-top: 8px;
-  }
-
-  .footer-info .name-big {
-    font-family: 'Noto Serif SC', serif;
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    color: var(--red);
-    text-shadow: 2px 2px 0 #440000, 0 0 15px rgba(204,34,0,0.35);
-    display: block;
-    margin-bottom: 12px;
-  }
-
-  .footer-info address {
-    font-style: normal;
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.8rem;
-    color: rgba(0,200,232,0.7);
-    line-height: 2;
-    letter-spacing: 1px;
-  }
-
-  .footer-info address a {
-    color: var(--text-yellow);
-    text-decoration: none;
-  }
-
-  .footer-info address a:hover {
-    color: var(--gold);
-    text-decoration: underline;
-  }
-
-  /* ============ CEASED NOTICE ============ */
-  .ceased-notice {
-    text-align: center;
-    margin: 24px 0 0;
-  }
-
-  .ceased-notice p {
-    font-family: 'VT323', monospace;
-    font-size: 1.4rem;
-    color: var(--gold);
-    letter-spacing: 4px;
-    text-shadow: 0 0 10px rgba(255,215,0,0.5);
-    line-height: 1.8;
-  }
-
-  /* ============ VISITOR COUNTER ============ */
-  .visitor-block {
-    text-align: center;
-    margin-top: 20px;
-  }
-
-  .visitor-block .counter-label {
-    font-family: 'VT323', monospace;
-    font-size: 1rem;
-    color: var(--red);
-    letter-spacing: 3px;
-    text-shadow: 0 0 6px rgba(204,34,0,0.4);
-    display: block;
-    margin-bottom: 6px;
-  }
-
-  .visitor-counter {
-    font-family: 'VT323', monospace;
-    font-size: 2rem;
-    color: var(--green-neon);
-    letter-spacing: 6px;
-    text-shadow: 0 0 10px rgba(0,255,136,0.7);
-    border: 2px solid rgba(0,255,136,0.3);
-    display: inline-block;
-    padding: 4px 16px;
-    background: rgba(0,20,10,0.6);
-  }
-
-  /* ============ GEOCITIES BADGE ============ */
-  .geocities-row {
-    text-align: center;
-    margin-top: 24px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(0,168,196,0.3);
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.72rem;
-    color: rgba(0,200,232,0.5);
-    letter-spacing: 2px;
-  }
-
-  /* ============ GUESTBOOK STAR DIVIDER ============ */
-  .star-divider {
-    text-align: center;
-    font-family: 'VT323', monospace;
-    font-size: 1.3rem;
-    color: rgba(0,200,232,0.5);
-    letter-spacing: 6px;
-    margin: 10px 0;
-    text-shadow: 0 0 6px rgba(0,200,232,0.3);
-  }
-
-  /* Responsive */
-  @media (max-width: 600px) {
-    .main-table { border-spacing: 6px; }
-    .main-table td { padding: 12px; }
-    .gallery-table { display: none; }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>十八十 — 来自天鹰座ζ的声音</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -457,11 +22,9 @@
     <div class="location">雅典，希腊 &nbsp;·&nbsp; ζ 天鹰座</div>
   </header>
 
-
-
-  <!-- Main 2-column table, Geocities style -->
   <table class="main-table">
     <tr>
+
       <!-- Album 1 -->
       <td style="text-align:center;">
         <span class="cell-title">来自天鹰座ζ的声音</span>
@@ -481,9 +44,10 @@
         </a>
         <span class="click-label">[ click to listen ]</span>
       </td>
+
     </tr>
 
-    <!-- About row spanning full width -->
+    <!-- About row -->
     <tr>
       <td colspan="2">
         <span class="cell-title" style="font-size:1.1rem;">关于</span>
@@ -497,22 +61,15 @@
     <tr>
       <td colspan="2">
         <span class="cell-title" style="font-size:1.1rem;">传输</span>
-        <div style="text-align:center; margin-top:8px; display:flex; flex-wrap:wrap; gap:16px; justify-content:center;">
-          <a href="https://shibashi.bandcamp.com/music" target="_blank" style="font-family:'VT323',monospace; font-size:1.3rem; color:var(--gold); text-shadow:0 0 8px rgba(255,215,0,0.5); text-decoration:none; border:1px solid rgba(255,215,0,0.4); padding:4px 14px; transition:all 0.2s;">
-            ♫ 所有音乐
-          </a>
-          <a href="https://shibashi.bandcamp.com/community" target="_blank" style="font-family:'VT323',monospace; font-size:1.3rem; color:var(--green-neon); text-shadow:0 0 8px rgba(0,255,136,0.4); text-decoration:none; border:1px solid rgba(0,255,136,0.3); padding:4px 14px; transition:all 0.2s;">
-            ◈ 社区
-          </a>
-          <a href="https://shibashi.bandcamp.com/contact?b=3947234794&n=%E5%8D%81%E5%85%AB%E5%8D%81" target="_blank" style="font-family:'VT323',monospace; font-size:1.3rem; color:var(--teal-shimmer); text-shadow:0 0 8px rgba(0,200,232,0.5); text-decoration:none; border:1px solid rgba(0,200,232,0.3); padding:4px 14px; transition:all 0.2s;">
-            ✉ 联系
-          </a>
+        <div class="transmission-links">
+          <a class="transmission-link gold" href="https://shibashi.bandcamp.com/music" target="_blank">♫ 所有音乐</a>
+          <a class="transmission-link green" href="https://shibashi.bandcamp.com/community" target="_blank">◈ 社区</a>
+          <a class="transmission-link teal" href="https://shibashi.bandcamp.com/contact?b=3947234794&n=%E5%8D%81%E5%85%AB%E5%8D%81" target="_blank">✉ 联系</a>
         </div>
       </td>
     </tr>
   </table>
 
-  <!-- Footer info block -->
   <footer class="footer-info">
     <span class="name-big">十八十</span>
     <address>
@@ -522,13 +79,11 @@
     </address>
   </footer>
 
-  <!-- Ceased-activity-style notice (adapted) -->
   <div class="ceased-notice">
     <p>传输继续</p>
     <p>信号仍在传播</p>
   </div>
 
-  <!-- Visitor counter -->
   <div class="visitor-block">
     <span class="counter-label">YOU ARE VISITOR N.:</span>
     <div class="visitor-counter" id="vcounter">000000</div>
@@ -538,23 +93,19 @@
     THIS PAGE HOSTED IN THE ETHER &nbsp;·&nbsp; 信号波
   </div>
 
+  <div class="glitch-toggle-block">
+    <button id="glitch-btn" class="glitch-btn">
+      <span class="glitch-btn-label">[ 信号干扰 : OFF ]</span>
+    </button>
+  </div>
+
 </div><!-- end wrapper -->
 
-<script>
-  // Fake visitor counter
-  const base = 4871 + Math.floor(Math.random() * 200);
-  document.getElementById('vcounter').textContent = String(base).padStart(6, '0');
+<!-- Glitch overlay layers -->
+<div class="glitch-overlay glitch-overlay-r" id="glitch-r"></div>
+<div class="glitch-overlay glitch-overlay-b" id="glitch-b"></div>
+<div class="glitch-scanband" id="glitch-scanband"></div>
 
-  // Subtle water ripple on mousemove
-  document.body.addEventListener('mousemove', (e) => {
-    const x = (e.clientX / window.innerWidth) * 2 - 1;
-    const y = (e.clientY / window.innerHeight) * 2 - 1;
-    document.body.style.backgroundPosition = `
-      ${200 + x * 15}px ${200 + y * 15}px,
-      ${x * 3}px ${y * 3}px,
-      ${x * 8}px ${y * 8}px
-    `;
-  });
-</script>
+<script src="main.js"></script>
 </body>
 </html>
