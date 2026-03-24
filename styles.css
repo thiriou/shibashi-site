@@ -425,10 +425,9 @@ body::after {
 .glitch-overlay { display: none; }
 .glitch-scanband { display: none; }
 
-/* Active glitch state — full page black & white high contrast */
+/* Active glitch state — invert all colors */
 html.glitching {
-  filter: grayscale(1) contrast(2.2) brightness(0.8) !important;
-  background: #000 !important;
+  filter: invert(1) !important;
 }
 
 html.glitching body {
