@@ -425,9 +425,9 @@ body::after {
 .glitch-overlay { display: none; }
 .glitch-scanband { display: none; }
 
-/* Active glitch state — black & white */
-body.glitching {
-  filter: grayscale(1) contrast(1.1) brightness(0.92);
+/* Active glitch state — full page black & white high contrast */
+html.glitching {
+  filter: grayscale(1) contrast(2.2) brightness(0.8) !important;
 }
 
 /* Snow canvas sits on top of everything */
@@ -442,7 +442,7 @@ body.glitching {
 }
 
 #snow-canvas.visible {
-  opacity: 0.18;
+  opacity: 0.35;
 }
 
 @media (max-width: 600px) {
