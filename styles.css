@@ -517,6 +517,13 @@ html.glitching body {
   background-image: none !important;
 }
 
+html.glitching .site-header h1,
+html.glitching .cell-title,
+html.glitching .footer-info .name-big {
+  color: #fff !important;
+  text-shadow: none !important;
+}
+
 html.glitching body::before,
 html.glitching body::after {
   display: none !important;
