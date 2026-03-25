@@ -170,6 +170,7 @@ body::after {
   border: 2px solid rgba(0,168,196,0.5);
   padding: 18px 20px;
   vertical-align: top;
+  overflow: visible;
   transition: border-color 0.3s, background 0.3s;
 }
 
@@ -238,9 +239,20 @@ body::after {
   color: var(--gold);
   text-align: center;
   display: block;
-  margin-top: 6px;
+  margin-top: 2px;
   letter-spacing: 2px;
   animation: blink 1.4s step-end infinite;
+  text-shadow: 0 0 6px rgba(255,215,0,0.6);
+}
+
+.click-label-zh {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.85rem;
+  color: var(--gold);
+  text-align: center;
+  display: block;
+  margin-top: 6px;
+  letter-spacing: 2px;
   text-shadow: 0 0 6px rgba(255,215,0,0.6);
 }
 
@@ -388,6 +400,58 @@ body::after {
 }
 
 
+/* ============ BUY STAR BADGE ============ */
+.floppy-cell-inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-top: 36px; /* make room for star overhanging top */
+}
+
+.buy-star {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 72px;
+  height: 72px;
+  background: var(--gold);
+  color: #000;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px;
+  clip-path: polygon(
+    50% 0%, 63% 25%, 93% 10%, 80% 38%,
+    100% 50%, 80% 62%, 93% 90%, 63% 75%,
+    50% 100%, 37% 75%, 7% 90%, 20% 62%,
+    0% 50%, 20% 38%, 7% 10%, 37% 25%
+  );
+  z-index: 10;
+  /* shift so centre of star sits on the corner: move up and left by half */
+  transform: translate(-50%, -50%) rotate(-12deg);
+  animation: star-pulse 1.8s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes star-pulse {
+  0%, 100% { transform: translate(-50%, -50%) rotate(-12deg) scale(1); filter: brightness(1); }
+  50% { transform: translate(-50%, -50%) rotate(-12deg) scale(1.1); filter: brightness(1.25); }
+}
+
+.album-art.floppy-art {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  background: transparent;
+  border-color: rgba(0,200,232,0.2);
+  box-shadow: 0 0 18px rgba(0,200,232,0.2);
+}
+
 /* ============ GLITCH TOGGLE ============ */
 .glitch-toggle-block {
   text-align: center;
@@ -425,9 +489,10 @@ body::after {
 .glitch-overlay { display: none; }
 .glitch-scanband { display: none; }
 
-/* Active glitch state — invert all colors */
+/* Active glitch state — full page black & white high contrast */
 html.glitching {
-  filter: invert(1) !important;
+  filter: grayscale(1) contrast(2.2) brightness(0.8) !important;
+  background: #000 !important;
 }
 
 html.glitching body {
