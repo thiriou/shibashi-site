@@ -163,6 +163,7 @@ body::after {
   border-collapse: separate;
   border-spacing: 12px;
   margin-bottom: 28px;
+  table-layout: fixed;
 }
 
 .main-table td {
@@ -187,6 +188,7 @@ body::after {
   display: block;
   margin-bottom: 8px;
   line-height: 1.3;
+  word-break: break-word;
 }
 
 .cell-subtitle {
