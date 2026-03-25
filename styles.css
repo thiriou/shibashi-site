@@ -545,6 +545,88 @@ html.glitching body::after {
 }
 
 @media (max-width: 600px) {
-  .main-table { border-spacing: 6px; }
-  .main-table td { padding: 12px; }
+  .wrapper {
+    padding: 12px 10px 40px;
+  }
+
+  /* Stack table rows into single column blocks */
+  .main-table,
+  .main-table tbody,
+  .main-table tr,
+  .main-table td {
+    display: block;
+    width: 100% !important;
+  }
+
+  .main-table td {
+    padding: 14px;
+    margin-bottom: 4px;
+    border-spacing: 0;
+  }
+
+  /* Floppy box full width on mobile */
+  .floppy-box {
+    width: 100%;
+    display: block;
+  }
+
+  /* Bigger album art on mobile */
+  .album-art {
+    width: 160px;
+    height: 160px;
+  }
+
+  .album-art.floppy-art {
+    width: 180px;
+    height: 180px;
+  }
+
+  /* Shrink header title slightly */
+  .site-header h1 {
+    font-size: 2.6rem;
+  }
+
+  .site-header .subtitle {
+    font-size: 1rem;
+    letter-spacing: 3px;
+  }
+
+  /* Cell titles smaller */
+  .cell-title {
+    font-size: 1.1rem;
+  }
+
+  /* Marquee smaller */
+  .marquee-bar {
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+
+  /* Transmission links wrap nicely */
+  .transmission-links {
+    gap: 10px;
+  }
+
+  .transmission-link {
+    font-size: 1.1rem;
+    padding: 4px 10px;
+  }
+
+  /* Footer */
+  .footer-info .name-big {
+    font-size: 2rem;
+  }
+
+  /* Star badge reposition for mobile */
+  .buy-star {
+    width: 60px;
+    height: 60px;
+    font-size: 0.55rem;
+  }
+
+  /* Visitor counter */
+  .visitor-counter {
+    font-size: 1.6rem;
+    letter-spacing: 4px;
+  }
 }
